@@ -57,6 +57,30 @@ func main() {
 		return
 	}
 
+	printSomething(1.3)
+	printSomething(3)
+	printSomething("das")
+	printSomething(todo)
+	result := add(1, 3)
+	fmt.Println("add() result ", result)
+}
+
+// switch on type
+// can also use "any" as the type. It is the same as interface{}
+func printSomething(value interface{}) {
+	switch value.(type) {
+	case int:
+		fmt.Println("Integer: ", value)
+	case float64:
+		fmt.Println("Float64: ", value)
+	case string:
+		fmt.Println("String: ", value)
+	}
+}
+
+// generics
+func add[T int | float64 | string](a, b T) T {
+	return a + b
 }
 
 func outputData(data outputtable) error {
